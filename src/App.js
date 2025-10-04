@@ -3,6 +3,7 @@ import BackgroundVideo from "./components/landing/BackgroundVideo";
 import LandingPage from "./components/landing/LandingPage";
 import About from "./components/content/About";
 import Projects from "./components/content/Projects";
+import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import "./App.css";
 
@@ -14,6 +15,7 @@ function App() {
       <div id="content">
         <About />
         <Projects />
+        <Contact />
         <Footer />
       </div>
     </div>

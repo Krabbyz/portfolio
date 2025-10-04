@@ -4,10 +4,51 @@ import "./Projects.css";
 
 const Projects = () => {
   return (
-    <div>
-      <h1 style={{ color: "#ffffff" }}>
+    <div className="projects-padding">
+      <h1 className="header-text">
         Here are some things I've built in my freetime
       </h1>
+      <ProjectTile
+        image="portfolio.jpg"
+        title="Restroom Locator App"
+        description="Guides you to the nearest restroom."
+        link1="https://github.com/Krabbyz"
+        link1Text="View"
+        link2="https://github.com/Krabbyz"
+        link2Text="Github"
+        skills={[
+          { image: "react.svg", name: "React" },
+          { image: "nodejslight.svg", name: "Node.js" },
+          { image: "js.svg", name: "JavaScript" },
+          { image: "postgres.svg", name: "PostgreSQL" },
+          { image: "docker.png", name: "Docker" },
+        ]}
+      />
+      <ProjectTile
+        image="krabbybot.jpg"
+        title="Krabby Bot"
+        description="A Discord bot that logs how long a server call has been going for. It posts the duration in a designated text channel and pins the server’s record for the longest call duration. "
+        link1="https://github.com/Krabbyz/Krabby_Bot"
+        link1Text="Github"
+        skills={[
+          { image: "python.svg", name: "Python" },
+          { image: "docker.png", name: "Docker" },
+          { image: "oracle.png", name: "Oracle Cloud Infrastructure" },
+        ]}
+      />
+      <ProjectTile
+        image="portfolio.jpg"
+        title="Portfolio"
+        description="What you're looking at right now."
+        link1="https://github.com/Krabbyz/portfolio"
+        link1Text="View"
+        link2="https://github.com/Krabbyz/portfolio"
+        link2Text="Github"
+        skills={[
+          { image: "react.svg", name: "React" },
+          { image: "js.svg", name: "JavaScript" },
+        ]}
+      />
       <ProjectTile
         image="inventory.jpg"
         title="Inventory Management System"
@@ -15,20 +56,34 @@ const Projects = () => {
         link1="https://github.com/Krabbyz/inventory"
         link1Text="Github"
         skills={[
-          "react.svg",
-          "js.svg",
-          "django.svg",
-          "python.svg",
-          "docker.png",
+          { image: "react.svg", name: "React" },
+          { image: "js.svg", name: "JavaScript" },
+          { image: "django.svg", name: "Django" },
+          { image: "python.svg", name: "Python" },
+          { image: "postgres.svg", name: "PostgreSQL" },
+          { image: "docker.png", name: "Docker" },
         ]}
+      />
+      <ProjectTile
+        image="allianceofkingdoms.jpg"
+        title="Alliance of Kingdoms"
+        description="A small tower defense game created in under 1 month with a couple of friends."
+        link1="https://krabbyz.itch.io/alliance-of-kingdoms"
+        link1Text="Play"
+        link2="https://github.com/Krabbyz/CMPM-80K_Final"
+        link2Text="Github"
+        skills={[{ image: "gdevelop.png", name: "GDevelop" }]}
       />
       <ProjectTile
         image="jumper.png"
         title="Jumper"
         description="A Unity Game Project inspired by Doodle Jump, made using Unity and C#. This project focused on learning Unity and implementing procedural generation."
         link1="https://krabbyz.itch.io/jumper"
-        link1Text="View"
-        skills={["unity.png", "csharp.svg"]}
+        link1Text="Play"
+        skills={[
+          { image: "unity.png", name: "Unity3D" },
+          { image: "csharp.svg", name: "C#" },
+        ]}
       />
     </div>
   );

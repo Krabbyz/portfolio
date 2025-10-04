@@ -5,6 +5,11 @@ html {
 #content {
   height: 100%;
   min-height: 100vh;
-  background: linear-gradient(to top, #1b2631, #0f0f0f);
+  background: linear-gradient(to bottom, #0f0f0f 0%, #1b2631 100%);
   position: relative;
+}
+
+.header-text {
+  color: #ffffff;
+  text-align: center;
 }

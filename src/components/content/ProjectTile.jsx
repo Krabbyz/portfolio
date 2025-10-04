@@ -36,8 +36,10 @@ const ProjectTile = ({
           {skills.map((skill, index) => (
             <img
               key={index}
-              src={require(`../images/${skill}`)}
+              src={require(`../images/${skill.image}`)}
               className="skill-icon"
+              alt={skill.name}
+              title={skill.name}
             />
           ))}
         </div>
