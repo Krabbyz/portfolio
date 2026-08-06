@@ -4,6 +4,8 @@ import { SiItchdotio } from "react-icons/si";
 import "./Footer.css";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="footer">
       <div className="social-links">
@@ -33,7 +35,7 @@ const Footer = () => {
         </a>
       </div>
 
-      <p className="copyright">Austin Nguyen © 2024 - 2025</p>
+      <p className="copyright">Austin Nguyen &copy; 2024 - {currentYear}</p>
     </div>
   );
 };
