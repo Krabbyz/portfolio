@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ProjectTile.css";
 
 const ProjectTile = ({
@@ -11,11 +11,66 @@ const ProjectTile = ({
   link2Text,
   skills,
 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const imageSrc = require(`../images/${image}`);
+
+  useEffect(() => {
+    if (!isExpanded) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsExpanded(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.classList.add("project-modal-open");
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.classList.remove("project-modal-open");
+    };
+  }, [isExpanded]);
+
   return (
     <div className="project-tile">
       <div className="project-image">
-        <img src={require(`../images/${image}`)} alt={title} />
+        <button
+          className="project-image-button"
+          type="button"
+          onClick={() => setIsExpanded(true)}
+          aria-label={`Expand ${title} image`}
+        >
+          <img src={imageSrc} alt={title} />
+        </button>
       </div>
+
+      {isExpanded && (
+        <div
+          className="project-image-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${title} expanded image`}
+          onClick={() => setIsExpanded(false)}
+        >
+          <button
+            className="project-image-modal-close"
+            type="button"
+            onClick={() => setIsExpanded(false)}
+            aria-label="Close expanded image"
+          >
+            &times;
+          </button>
+          <img
+            src={imageSrc}
+            alt={title}
+            className="project-image-modal-img"
+            onClick={(event) => event.stopPropagation()}
+          />
+        </div>
+      )}
 
       <div className="project-details">
         <h3>{title}</h3>

@@ -11,6 +11,70 @@
   border: 10px solid #dee2e6;
 }
 
+.project-image-button {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.project-image-button img {
+  display: block;
+}
+
+.project-image-button:focus-visible {
+  outline: 3px solid #80bdff;
+  outline-offset: 4px;
+}
+
+.project-modal-open {
+  overflow: hidden;
+}
+
+.project-image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 24px;
+  cursor: zoom-out;
+}
+
+.project-image-modal-img {
+  max-width: 85vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  border: 10px solid #dee2e6;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+
+.project-image-modal-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.project-image-modal-close:hover,
+.project-image-modal-close:focus-visible {
+  background: rgba(0, 0, 0, 0.7);
+  outline: none;
+}
+
 .project-details {
   flex: 1;
   margin-left: 20px;

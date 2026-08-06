@@ -28,9 +28,9 @@ const Projects = () => {
         image="bathroomlocator2.png"
         title="Bathroom Locator"
         description="Guides you to the nearest restroom."
-        link1="https://github.com/Krabbyz"
+        link1="https://github.com/harshitabha/bathroom-locator"
         link1Text="View"
-        link2="https://github.com/Krabbyz"
+        link2="https://github.com/harshitabha/bathroom-locator"
         link2Text="Github"
         skills={[
           { image: "react.svg", name: "React" },
@@ -50,19 +50,6 @@ const Projects = () => {
           { image: "python.svg", name: "Python" },
           { image: "docker.png", name: "Docker" },
           { image: "oracle.png", name: "Oracle Cloud Infrastructure" },
-        ]}
-      />
-      <ProjectTile
-        image="portfolio.jpg"
-        title="Portfolio"
-        description="What you're looking at right now."
-        link1="https://github.com/Krabbyz/portfolio"
-        link1Text="View"
-        link2="https://github.com/Krabbyz/portfolio"
-        link2Text="Github"
-        skills={[
-          { image: "react.svg", name: "React" },
-          { image: "js.svg", name: "JavaScript" },
         ]}
       />
       <ProjectTile
