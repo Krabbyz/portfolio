@@ -9,8 +9,24 @@ const Projects = () => {
         Here are some things I've built in my freetime
       </h1>
       <ProjectTile
-        image="portfolio.jpg"
-        title="Restroom Locator App"
+        image="slugmarketplace.png"
+        title="Slug Marketplace"
+        description="Guides you to the nearest restroom."
+        link1="https://slugmarketplace.com/"
+        link1Text="View"
+        skills={[
+          { image: "react.svg", name: "React" },
+          { image: "nodejslight.svg", name: "Node.js" },
+          { image: "graphql.svg", name: "GraphQL" },
+          { image: "js.svg", name: "JavaScript" },
+          { image: "postgres.svg", name: "PostgreSQL" },
+          { image: "docker.png", name: "Docker" },
+          { image: "aws.svg", name: "AWS EC2" },
+        ]}
+      />
+      <ProjectTile
+        image="bathroomlocator2.png"
+        title="Bathroom Locator"
         description="Guides you to the nearest restroom."
         link1="https://github.com/Krabbyz"
         link1Text="View"
