@@ -2,8 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  background:
-    #050505;
+  background: linear-gradient(to bottom, #0f0f0f 0%, #1b2631 100%);
 }
 
 .bgCanvas {

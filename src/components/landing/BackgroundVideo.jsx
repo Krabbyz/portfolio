@@ -17,6 +17,21 @@ const BackgroundVideo = () => {
     const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     let dots = [];
     let animationFrameId;
+    let interactionStrength = 1;
+    let targetInteractionStrength = 1;
+    let transitionStartStrength = 1;
+    let transitionStartTime = performance.now();
+    const fadeDuration = 700;
+
+    const updateInteractionTarget = () => {
+      const nextTarget = window.scrollY < window.innerHeight / 2 ? 1 : 0;
+
+      if (nextTarget !== targetInteractionStrength) {
+        transitionStartStrength = interactionStrength;
+        transitionStartTime = performance.now();
+        targetInteractionStrength = nextTarget;
+      }
+    };
 
     const getSettings = () => {
       const width = window.innerWidth;
@@ -50,6 +65,7 @@ const BackgroundVideo = () => {
     });
 
     const resizeCanvas = () => {
+      updateInteractionTarget();
       const pixelRatio = window.devicePixelRatio || 1;
       const { innerWidth, innerHeight } = window;
 
@@ -63,7 +79,7 @@ const BackgroundVideo = () => {
       dots = Array.from({ length: settings.count }, createDot);
     };
 
-    const drawDot = (dot, settings) => {
+    const drawDot = (dot, settings, strength) => {
       const distanceFromMouse = Math.hypot(dot.x - mouse.x, dot.y - mouse.y);
       const fadeDistance = Math.max(window.innerWidth / 1.5, 1);
       const opacity = Math.max(0.15, 1 - distanceFromMouse / fadeDistance);
@@ -76,7 +92,7 @@ const BackgroundVideo = () => {
       context.fill();
       context.shadowBlur = 0;
 
-      if (settings.radius && settings.distance) {
+      if (strength > 0 && settings.radius && settings.distance) {
         for (const otherDot of dots) {
           const dotDistance = Math.hypot(dot.x - otherDot.x, dot.y - otherDot.y);
 
@@ -87,7 +103,7 @@ const BackgroundVideo = () => {
             const lineOpacity = Math.max(
               0,
               1 - distanceFromMouse / settings.radius - 0.2
-            );
+            ) * strength;
 
             context.beginPath();
             context.moveTo(dot.x, dot.y);
@@ -99,8 +115,13 @@ const BackgroundVideo = () => {
       }
     };
 
-    const drawTriangles = (settings) => {
-      if (!settings.radius || !settings.distance || !settings.triangles) {
+    const drawTriangles = (settings, strength) => {
+      if (
+        strength <= 0 ||
+        !settings.radius ||
+        !settings.distance ||
+        !settings.triangles
+      ) {
         return;
       }
 
@@ -154,7 +175,7 @@ const BackgroundVideo = () => {
               const fillOpacity = Math.max(
                 0,
                 (1 - distanceFromMouse / settings.radius) * 0.075
-              );
+              ) * strength;
 
               context.beginPath();
               context.moveTo(dot.x, dot.y);
@@ -170,15 +191,25 @@ const BackgroundVideo = () => {
       }
     };
 
-    const animate = () => {
+    const animate = (currentTime) => {
       const settings = getSettings();
+      const transitionProgress = Math.min(
+        (currentTime - transitionStartTime) / fadeDuration,
+        1
+      );
+
+      interactionStrength =
+        transitionStartStrength +
+        (targetInteractionStrength - transitionStartStrength) *
+          transitionProgress;
+      const strength = interactionStrength;
 
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
       context.lineWidth = 0.35;
-      drawTriangles(settings);
+      drawTriangles(settings, strength);
 
       dots.forEach((dot, index) => {
-        if (index === 0) {
+        if (index === 0 && strength > 0) {
           dot.x = mouse.x;
           dot.y = mouse.y;
           dot.radius = 1.8;
@@ -196,7 +227,7 @@ const BackgroundVideo = () => {
           dot.y += dot.vy;
         }
 
-        drawDot(dot, settings);
+        drawDot(dot, settings, strength);
       });
 
       animationFrameId = window.requestAnimationFrame(animate);
@@ -207,15 +238,18 @@ const BackgroundVideo = () => {
       mouse.y = event.clientY;
     };
 
+    updateInteractionTarget();
     resizeCanvas();
-    animate();
+    animate(performance.now());
 
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", updateInteractionTarget, { passive: true });
     window.addEventListener("resize", resizeCanvas);
 
     return () => {
       window.cancelAnimationFrame(animationFrameId);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", updateInteractionTarget);
       window.removeEventListener("resize", resizeCanvas);
     };
   }, []);
