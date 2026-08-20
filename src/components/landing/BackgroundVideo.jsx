@@ -33,6 +33,18 @@ const BackgroundVideo = () => {
       }
     };
 
+    const updateInteractionStrength = (currentTime) => {
+      const transitionProgress = Math.min(
+        (currentTime - transitionStartTime) / fadeDuration,
+        1
+      );
+
+      interactionStrength =
+        transitionStartStrength +
+        (targetInteractionStrength - transitionStartStrength) *
+          transitionProgress;
+    };
+
     const getSettings = () => {
       const width = window.innerWidth;
 
@@ -79,10 +91,20 @@ const BackgroundVideo = () => {
       dots = Array.from({ length: settings.count }, createDot);
     };
 
-    const drawDot = (dot, settings, strength) => {
+    const getRetainedDotCount = () => {
+      return Math.ceil(dots.length * 0.25);
+    };
+
+    const drawDot = (dot, settings, strength, lineDots, isRetained) => {
       const distanceFromMouse = Math.hypot(dot.x - mouse.x, dot.y - mouse.y);
       const fadeDistance = Math.max(window.innerWidth / 1.5, 1);
-      const opacity = Math.max(0.15, 1 - distanceFromMouse / fadeDistance);
+      const dotVisibility = isRetained ? 1 : strength;
+      const opacity =
+        Math.max(0.15, 1 - distanceFromMouse / fadeDistance) * dotVisibility;
+
+      if (opacity <= 0) {
+        return;
+      }
 
       context.beginPath();
       context.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
@@ -93,7 +115,7 @@ const BackgroundVideo = () => {
       context.shadowBlur = 0;
 
       if (strength > 0 && settings.radius && settings.distance) {
-        for (const otherDot of dots) {
+        for (const otherDot of lineDots) {
           const dotDistance = Math.hypot(dot.x - otherDot.x, dot.y - otherDot.y);
 
           if (
@@ -115,7 +137,7 @@ const BackgroundVideo = () => {
       }
     };
 
-    const drawTriangles = (settings, strength) => {
+    const drawTriangles = (settings, strength, activeDots) => {
       if (
         strength <= 0 ||
         !settings.radius ||
@@ -128,12 +150,12 @@ const BackgroundVideo = () => {
       const triangleDistance = settings.distance * 1.15;
       let trianglesDrawn = 0;
 
-      for (let index = 0; index < dots.length; index += 1) {
+      for (let index = 0; index < activeDots.length; index += 1) {
         if (trianglesDrawn >= settings.triangles) {
           return;
         }
 
-        const dot = dots[index];
+        const dot = activeDots[index];
         const distanceFromMouse = Math.hypot(dot.x - mouse.x, dot.y - mouse.y);
 
         if (distanceFromMouse > settings.radius) {
@@ -142,8 +164,12 @@ const BackgroundVideo = () => {
 
         const nearbyDots = [];
 
-        for (let otherIndex = index + 1; otherIndex < dots.length; otherIndex += 1) {
-          const otherDot = dots[otherIndex];
+        for (
+          let otherIndex = index + 1;
+          otherIndex < activeDots.length;
+          otherIndex += 1
+        ) {
+          const otherDot = activeDots[otherIndex];
           const dotDistance = Math.hypot(dot.x - otherDot.x, dot.y - otherDot.y);
 
           if (dotDistance < triangleDistance) {
@@ -193,20 +219,14 @@ const BackgroundVideo = () => {
 
     const animate = (currentTime) => {
       const settings = getSettings();
-      const transitionProgress = Math.min(
-        (currentTime - transitionStartTime) / fadeDuration,
-        1
-      );
-
-      interactionStrength =
-        transitionStartStrength +
-        (targetInteractionStrength - transitionStartStrength) *
-          transitionProgress;
+      updateInteractionStrength(currentTime);
       const strength = interactionStrength;
+      const retainedDotCount = getRetainedDotCount();
+      const lineDots = strength > 0 ? dots : dots.slice(0, retainedDotCount);
 
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
       context.lineWidth = 0.35;
-      drawTriangles(settings, strength);
+      drawTriangles(settings, strength, lineDots);
 
       dots.forEach((dot, index) => {
         if (index === 0 && strength > 0) {
@@ -227,7 +247,7 @@ const BackgroundVideo = () => {
           dot.y += dot.vy;
         }
 
-        drawDot(dot, settings, strength);
+        drawDot(dot, settings, strength, lineDots, index < retainedDotCount);
       });
 
       animationFrameId = window.requestAnimationFrame(animate);
