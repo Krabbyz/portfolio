@@ -5,7 +5,7 @@ import "./Projects.css";
 const Projects = () => {
   return (
     <div id="projects" className="projects-padding">
-      <h1 className="header-text">
+      <h1 className="header-text projects-header">
         Here are some things I've built in my freetime
       </h1>
       <ProjectTile
