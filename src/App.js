@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "./components/nav/Navbar";
 import BackgroundVideo from "./components/landing/BackgroundVideo";
 import LandingPage from "./components/landing/LandingPage";
 import About from "./components/content/About";
@@ -9,7 +10,8 @@ import "./App.css";
 
 function App() {
   return (
-    <div>
+    <div id="home">
+      <Navbar />
       <BackgroundVideo />
       <LandingPage />
       <div id="content">

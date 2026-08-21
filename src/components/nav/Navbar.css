@@ -1,0 +1,57 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 32px 12px 20px;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: auto;
+  transition:
+    opacity 220ms ease;
+}
+
+.navbarVisible,
+.navbar:hover,
+.navbar:focus-within {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar:not(.navbarVisible):not(:hover):not(:focus-within) .navbarLink {
+  pointer-events: none;
+}
+
+.navbarLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    opacity 160ms ease;
+}
+
+.navbarLink:hover,
+.navbarLink:focus-visible {
+  color: #d8ecff;
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    top: 0;
+    right: 0;
+    padding: 8px 20px 8px 16px;
+    gap: 16px;
+  }
+}

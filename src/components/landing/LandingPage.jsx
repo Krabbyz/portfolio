@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div className="frontpage">
       <div className="title centerText">
         <h1 className="name">AUSTIN NGUYEN</h1>
-        <h3 className="subtitle">COMPUTER SCIENCE COLLEGE STUDENT</h3>
+        <h3 className="subtitle">SOFTWARE DEVELOPER</h3>
       </div>
       <a href="#content" className="scrollIndicator">
         <CaretDownOutlined />
