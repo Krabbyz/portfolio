@@ -11,7 +11,7 @@ const Projects = () => {
       <ProjectTile
         image="slugmarketplace.png"
         title="Slug Marketplace"
-        description="Guides you to the nearest restroom."
+        description="An online marketplace where users can browse and purchase products across dozens of categories, view detailed item pages with pricing and reviews, and add items to their cart."
         link1="https://slugmarketplace.com/"
         link1Text="View"
         skills={[
@@ -28,7 +28,7 @@ const Projects = () => {
         image="bathroomlocator2.png"
         title="Bathroom Locator"
         description="Guides you to the nearest restroom."
-        link1="https://github.com/harshitabha/bathroom-locator"
+        link1="https://bathroom-locator.up.railway.app/"
         link1Text="View"
         link2="https://github.com/harshitabha/bathroom-locator"
         link2Text="Github"
