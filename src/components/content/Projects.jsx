@@ -12,7 +12,10 @@ const Projects = () => {
         image="slugmarketplace.png"
         title="Slug Marketplace"
         description="An online marketplace where users can browse and purchase products across dozens of categories, view detailed item pages with pricing and reviews, and add items to their cart."
-        links={[{ text: "View", link: "https://slugmarketplace.com/" }]}
+        links={[
+          { text: "View", link: "https://slugmarketplace.com/" },
+          { text: "Github", link: "https://github.com/PouriaRez/Slugmarketplace" },
+        ]}
         skills={[
           { image: "react.svg", name: "React" },
           { image: "nodejslight.svg", name: "Node.js" },
