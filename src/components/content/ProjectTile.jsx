@@ -87,14 +87,15 @@ const ProjectTile = ({
         </div>
 
         <div className="project-skills">
-          {skills.map((skill, index) => (
-            <img
-              key={index}
-              src={require(`../images/logos/${skill.image}`)}
-              className="skill-icon"
-              alt={skill.name}
-              title={skill.name}
-            />
+          {skills.map((skill) => (
+            <div className="skill-item" key={`${title}-${skill.name}`}>
+              <img
+                src={require(`../images/logos/${skill.image}`)}
+                className="skill-icon"
+                alt={skill.name}
+              />
+              <span className="skill-name">{skill.name}</span>
+            </div>
           ))}
         </div>
       </div>
