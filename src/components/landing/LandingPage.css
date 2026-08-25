@@ -51,12 +51,17 @@ h3 {
   bottom: 10px;
   left: 50%;
   font-size: 40px;
-  animation: bounce 2s infinite;
   opacity: 1;
+  transform: translateX(-50%);
   visibility: visible;
   transition:
     opacity 180ms ease,
     visibility 180ms ease;
+}
+
+.scrollIndicator .anticon {
+  animation: bounce 2s infinite;
+  display: block;
 }
 
 .scrollIndicatorHidden {

@@ -8,15 +8,53 @@
 .project-image img {
   width: 650px;
   height: auto;
-  border: 3px solid #505050;
 }
 
 .project-image-button {
   display: block;
   padding: 0;
-  border: 0;
+  border: 3px solid #ffffff;
   background: transparent;
   cursor: zoom-in;
+  position: relative;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.project-image-button::before {
+  animation: project-border-spin 1.8s linear infinite;
+  background: conic-gradient(
+    from var(--project-border-angle),
+    rgba(146, 235, 181, 0.95),
+    rgba(70, 240, 110, 0.9),
+    rgba(0, 181, 60, 0.88),
+    rgba(146, 235, 181, 0.95)
+  );
+  content: "";
+  inset: -3px;
+  opacity: 0;
+  padding: 3px;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 180ms ease;
+  -webkit-mask:
+    linear-gradient(#ffffff 0 0) content-box,
+    linear-gradient(#ffffff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#ffffff 0 0) content-box,
+    linear-gradient(#ffffff 0 0);
+  mask-composite: exclude;
+}
+
+.project-image-button:hover {
+  border-color: transparent;
+  box-shadow:
+    0 0 0 1px rgba(146, 235, 181, 0.26),
+    0 0 18px rgba(70, 240, 110, 0.28);
+}
+
+.project-image-button:hover::before {
+  opacity: 1;
 }
 
 .project-image-button img {
@@ -148,4 +186,16 @@
 .skill-item:hover .skill-name {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+@keyframes project-border-spin {
+  to {
+    --project-border-angle: 1turn;
+  }
+}
+
+@property --project-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }

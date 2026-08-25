@@ -26,7 +26,7 @@ const Projects = () => {
       <ProjectTile
         image="bathroomlocator.png"
         title="Bathroom Locator"
-        description="Guides you to the nearest restroom."
+        description="A web app that helps users find nearby restrooms on an interactive map, view details like gender-neutral access and menstrual product availability, route to a selected restroom through Google Maps, and contribute new locations."
         links={[
           { text: "View", link: "https://bathroom-locator.up.railway.app/" },
           { text: "Github", link: "https://github.com/harshitabha/bathroom-locator" },

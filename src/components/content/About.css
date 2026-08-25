@@ -30,17 +30,59 @@
 .about-profile {
   align-items: center;
   aspect-ratio: 1;
-  border: 4px solid rgba(255, 255, 255, 0.9);
+  border: 3px solid rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
   display: flex;
   justify-content: center;
   max-width: 320px;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
   width: min(100%, 28vw);
 }
 
+.about-profile::before {
+  animation: technology-border-spin 1.8s linear infinite;
+  background: conic-gradient(
+    from var(--technology-border-angle),
+    rgba(146, 235, 181, 0.95),
+    rgba(70, 240, 110, 0.9),
+    rgba(0, 181, 60, 0.88),
+    rgba(146, 235, 181, 0.95)
+  );
+  border-radius: inherit;
+  content: "";
+  inset: -3px;
+  opacity: 0;
+  padding: 3px;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 180ms ease;
+  z-index: 1;
+  -webkit-mask:
+    linear-gradient(#ffffff 0 0) content-box,
+    linear-gradient(#ffffff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#ffffff 0 0) content-box,
+    linear-gradient(#ffffff 0 0);
+  mask-composite: exclude;
+}
+
+.about-profile:hover {
+  border-color: transparent;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.24),
+    0 0 16px rgba(70, 240, 110, 0.28);
+}
+
+.about-profile:hover::before {
+  opacity: 1;
+}
+
 .about-profile img {
+  border-radius: 50%;
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -59,64 +101,9 @@
 
 .about-bio p {
   color: rgba(255, 255, 255, 0.86);
-  font-size: 1.06rem;
+  font-size: 1.11rem;
   line-height: 1.7;
   margin: 0;
-}
-
-.about-technologies {
-  display: grid;
-  gap: 2px;
-  grid-template-rows: repeat(3, auto);
-}
-
-.technology-panel {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  justify-content: flex-start;
-  min-height: auto;
-  padding: clamp(8px, 1.4vw, 12px) clamp(10px, 2vw, 16px);
-}
-
-.technology-panel h2 {
-  color: #ffffff;
-  font-size: clamp(1.45rem, 3vw, 2rem);
-  font-weight: 500;
-  letter-spacing: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.technology-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-}
-
-.technology-item {
-  align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 6px;
-  display: inline-flex;
-  gap: 8px;
-  min-height: 38px;
-  padding: 7px 10px;
-}
-
-.technology-item img {
-  height: 22px;
-  object-fit: contain;
-  width: 22px;
-}
-
-.technology-item span {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.92rem;
-  line-height: 1.2;
-  white-space: nowrap;
 }
 
 @media (max-width: 900px) {
@@ -146,21 +133,5 @@
 
   .about-header {
     margin-bottom: 34px;
-  }
-
-  .technology-panel {
-    padding: 10px 8px;
-  }
-
-  .technology-list {
-    gap: 10px;
-  }
-
-  .technology-item {
-    max-width: 100%;
-  }
-
-  .technology-item span {
-    white-space: normal;
   }
 }

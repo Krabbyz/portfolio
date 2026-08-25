@@ -1,4 +1,5 @@
 import React from "react";
+import TechnologyPanel from "./TechnologyPanel";
 import "./About.css";
 
 const profileImage = require("../images/logos/snowman_happy.png");
@@ -60,31 +61,21 @@ const About = () => {
 
           <div className="about-bio">
             <p>
-              Hi, I’m Austin Nguyen. I’ve been fascinated by computers for as long as I can remember, and that curiosity grew into a passion for building software and solving problems through technology.
+              Hi, I'm Austin Nguyen. I've been fascinated by computers for as long as I can remember, and that curiosity grew into a passion for building software and solving problems through technology.
             </p>
             <p>
-              I enjoy creating practical solutions that make things easier, more efficient, and more enjoyable to use. Whether I’m learning a new tool or improving an existing project, I’m always looking for ways to grow as a developer and strengthen my skills.
+              I enjoy creating practical solutions that make things easier, more efficient, and more enjoyable to use. Whether I'm learning a new tool or improving an existing project, I'm always looking for ways to grow as a developer and strengthen my skills.
             </p>
           </div>
         </div>
 
         <div className="about-technologies" aria-label="Technology groups">
           {technologyGroups.map((group) => (
-            <article className="technology-panel" key={group.title}>
-              <h2>{group.title}</h2>
-              <div className="technology-list">
-                {group.skills.map((skill) => (
-                  <div className="technology-item" key={skill.name}>
-                    <img
-                      src={require(`../images/logos/${skill.image}`)}
-                      alt=""
-                      aria-hidden="true"
-                    />
-                    <span>{skill.name}</span>
-                  </div>
-                ))}
-              </div>
-            </article>
+            <TechnologyPanel
+              key={group.title}
+              title={group.title}
+              skills={group.skills}
+            />
           ))}
         </div>
       </div>
