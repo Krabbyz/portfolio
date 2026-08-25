@@ -12,8 +12,7 @@ const Projects = () => {
         image="slugmarketplace.png"
         title="Slug Marketplace"
         description="An online marketplace where users can browse and purchase products across dozens of categories, view detailed item pages with pricing and reviews, and add items to their cart."
-        link1="https://slugmarketplace.com/"
-        link1Text="View"
+        links={[{ text: "View", link: "https://slugmarketplace.com/" }]}
         skills={[
           { image: "react.svg", name: "React" },
           { image: "nodejslight.svg", name: "Node.js" },
@@ -25,27 +24,31 @@ const Projects = () => {
         ]}
       />
       <ProjectTile
-        image="bathroomlocator2.png"
+        image="bathroomlocator.png"
         title="Bathroom Locator"
         description="Guides you to the nearest restroom."
-        link1="https://bathroom-locator.up.railway.app/"
-        link1Text="View"
-        link2="https://github.com/harshitabha/bathroom-locator"
-        link2Text="Github"
+        links={[
+          { text: "View", link: "https://bathroom-locator.up.railway.app/" },
+          { text: "Github", link: "https://github.com/harshitabha/bathroom-locator" },
+          { text: "Design Doc", link: "https://www.figma.com/design/h6qSHcfnFbYFndjbr4gzcV/Bathroom-Locator?node-id=0-1&p=f&t=pvC2A1zGJEREuQhi-0" },
+        ]}
         skills={[
           { image: "react.svg", name: "React" },
           { image: "nodejslight.svg", name: "Node.js" },
           { image: "js.svg", name: "JavaScript" },
           { image: "postgres.svg", name: "PostgreSQL" },
           { image: "docker.png", name: "Docker" },
+          { image: "supabase.svg", name: "Supabase" },
         ]}
       />
       <ProjectTile
         image="krabbybot.jpg"
         title="Krabby Bot"
         description="A Discord bot that logs how long a server call has been going for. It posts the duration in a designated text channel and pins the server’s record for the longest call duration. "
-        link1="https://github.com/Krabbyz/Krabby_Bot"
-        link1Text="Github"
+        links={[
+          { text: "Github", link: "https://github.com/Krabbyz/Krabby_Bot" },
+          { text: "Add to server", link: "https://discord.com/oauth2/authorize?client_id=1415030788306763856" },
+        ]}
         skills={[
           { image: "python.svg", name: "Python" },
           { image: "docker.png", name: "Docker" },
@@ -56,8 +59,7 @@ const Projects = () => {
         image="inventory.jpg"
         title="Inventory Management System"
         description="A inventory management system used to keep track of items in stock. Made for use at Gong Cha Hayward."
-        link1="https://github.com/Krabbyz/inventory"
-        link1Text="Github"
+        links={[{ text: "Github", link: "https://github.com/Krabbyz/inventory" }]}
         skills={[
           { image: "react.svg", name: "React" },
           { image: "js.svg", name: "JavaScript" },
@@ -71,18 +73,17 @@ const Projects = () => {
         image="allianceofkingdoms.jpg"
         title="Alliance of Kingdoms"
         description="A small tower defense game created in under 1 month with a couple of friends."
-        link1="https://krabbyz.itch.io/alliance-of-kingdoms"
-        link1Text="Play"
-        link2="https://github.com/Krabbyz/CMPM-80K_Final"
-        link2Text="Github"
+        links={[
+          { text: "Play", link: "https://krabbyz.itch.io/alliance-of-kingdoms" },
+          { text: "Github", link: "https://github.com/Krabbyz/CMPM-80K_Final" },
+        ]}
         skills={[{ image: "gdevelop.png", name: "GDevelop" }]}
       />
       <ProjectTile
         image="jumper.png"
         title="Jumper"
         description="A Unity Game Project inspired by Doodle Jump, made using Unity and C#. This project focused on learning Unity and implementing procedural generation."
-        link1="https://krabbyz.itch.io/jumper"
-        link1Text="Play"
+        links={[{ text: "Play", link: "https://krabbyz.itch.io/jumper" }]}
         skills={[
           { image: "unity.png", name: "Unity3D" },
           { image: "csharp.svg", name: "C#" },

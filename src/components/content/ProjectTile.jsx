@@ -5,14 +5,11 @@ const ProjectTile = ({
   image,
   title,
   description,
-  link1,
-  link1Text,
-  link2,
-  link2Text,
+  links,
   skills,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const imageSrc = require(`../images/${image}`);
+  const imageSrc = require(`../images/projects/${image}`);
 
   useEffect(() => {
     if (!isExpanded) {
@@ -77,21 +74,23 @@ const ProjectTile = ({
         <p>{description}</p>
 
         <div className="project-links">
-          <a href={link1} target="_blank" rel="noopener noreferrer">
-            {link1Text}
-          </a>
-          {link2 && (
-            <a href={link2} target="_blank" rel="noopener noreferrer">
-              {link2Text}
+          {links.map((projectLink) => (
+            <a
+              key={projectLink.link}
+              href={projectLink.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {projectLink.text}
             </a>
-          )}
+          ))}
         </div>
 
         <div className="project-skills">
           {skills.map((skill, index) => (
             <img
               key={index}
-              src={require(`../images/${skill.image}`)}
+              src={require(`../images/logos/${skill.image}`)}
               className="skill-icon"
               alt={skill.name}
               title={skill.name}
