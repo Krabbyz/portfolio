@@ -1,5 +1,18 @@
-html {
+html,
+body {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+html.scrollbarDragging,
+html.scrollbarDragging body {
+  scroll-behavior: auto;
 }
 
 #content {
