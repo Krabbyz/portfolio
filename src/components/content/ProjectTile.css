@@ -21,7 +21,6 @@
 }
 
 .project-image-button::before {
-  animation: project-border-spin 1.8s linear infinite;
   background: conic-gradient(
     from var(--project-border-angle),
     rgba(146, 235, 181, 0.95),
@@ -54,6 +53,7 @@
 }
 
 .project-image-button:hover::before {
+  animation: project-border-spin 1.8s linear infinite;
   opacity: 1;
 }
 

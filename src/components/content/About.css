@@ -43,7 +43,6 @@
 }
 
 .about-profile::before {
-  animation: technology-border-spin 1.8s linear infinite;
   background: conic-gradient(
     from var(--technology-border-angle),
     rgba(146, 235, 181, 0.95),
@@ -78,6 +77,7 @@
 }
 
 .about-profile:hover::before {
+  animation: technology-border-spin 1.8s linear infinite;
   opacity: 1;
 }
 
