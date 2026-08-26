@@ -17,18 +17,21 @@
   text-shadow:
     0 0 6px rgba(255, 255, 255, 0.24),
     0 0 16px rgba(255, 255, 255, 0.12);
+  width: calc(100% - 32px);
 }
 
 .name {
-  font-size: 4rem;
+  font-size: clamp(2rem, 9vw, 4rem);
   text-shadow:
     0 0 8px rgba(255, 255, 255, 0.24),
     0 0 20px rgba(255, 255, 255, 0.22),
     0 0 34px rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
 }
 
 .subtitle {
-  font-size: 1.8rem;
+  font-size: clamp(1.05rem, 4.8vw, 1.8rem);
+  white-space: nowrap;
 }
 
 h1,

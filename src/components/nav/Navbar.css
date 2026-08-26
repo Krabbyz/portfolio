@@ -49,9 +49,6 @@
 
 @media (max-width: 600px) {
   .navbar {
-    top: 0;
-    right: 0;
-    padding: 8px 20px 8px 16px;
-    gap: 16px;
+    display: none;
   }
 }

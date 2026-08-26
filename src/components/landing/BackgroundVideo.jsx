@@ -21,7 +21,15 @@ const BackgroundVideo = () => {
     let targetInteractionStrength = 1;
     let transitionStartStrength = 1;
     let transitionStartTime = performance.now();
+    let isAutoPointerEnabled = false;
+    let lastPointerMoveTime = 0;
     const fadeDuration = 700;
+
+    const updatePointerMode = () => {
+      isAutoPointerEnabled = window.matchMedia(
+        "(max-width: 700px), (pointer: coarse)"
+      ).matches;
+    };
 
     const updateInteractionTarget = () => {
       const nextTarget = window.scrollY < window.innerHeight / 2 ? 1 : 0;
@@ -57,14 +65,14 @@ const BackgroundVideo = () => {
       }
 
       if (width > 900) {
-        return { count: 185, distance: 62, radius: 325, triangles: 24 };
+        return { count: 200, distance: 95, radius: 325, triangles: 24 };
       }
 
       if (width > 600) {
-        return { count: 105, distance: 46, radius: 237.5, triangles: 14 };
+        return { count: 145, distance: 90, radius: 250.5, triangles: 19 };
       }
 
-      return { count: 70, distance: 0, radius: 0, triangles: 0 };
+      return { count: 82, distance: 70, radius: 150, triangles: 14 };
     };
 
     const createDot = () => ({
@@ -220,6 +228,21 @@ const BackgroundVideo = () => {
     const animate = (currentTime) => {
       const settings = getSettings();
       updateInteractionStrength(currentTime);
+      if (
+        isAutoPointerEnabled &&
+        currentTime - lastPointerMoveTime > 1200
+      ) {
+        const horizontalTravel = window.innerWidth * 0.28;
+        const verticalTravel = window.innerHeight * 0.18;
+
+        mouse.x =
+          window.innerWidth / 2 +
+          Math.cos(currentTime / 1000) * horizontalTravel;
+        mouse.y =
+          window.innerHeight / 2 +
+          Math.sin(currentTime / 1500) * verticalTravel;
+      }
+
       const strength = interactionStrength;
       const retainedDotCount = getRetainedDotCount();
       const lineDots = strength > 0 ? dots : dots.slice(0, retainedDotCount);
@@ -256,21 +279,39 @@ const BackgroundVideo = () => {
     const handleMouseMove = (event) => {
       mouse.x = event.clientX;
       mouse.y = event.clientY;
+      lastPointerMoveTime = performance.now();
+    };
+
+    const handleTouchMove = (event) => {
+      const touch = event.touches[0];
+
+      if (!touch) {
+        return;
+      }
+
+      mouse.x = touch.clientX;
+      mouse.y = touch.clientY;
+      lastPointerMoveTime = performance.now();
     };
 
     updateInteractionTarget();
+    updatePointerMode();
     resizeCanvas();
     animate(performance.now());
 
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
     window.addEventListener("scroll", updateInteractionTarget, { passive: true });
     window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", updatePointerMode);
 
     return () => {
       window.cancelAnimationFrame(animationFrameId);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("scroll", updateInteractionTarget);
       window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("resize", updatePointerMode);
     };
   }, []);
 

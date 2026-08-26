@@ -1,8 +1,12 @@
 .contact-section {
+  box-sizing: border-box;
   text-align: center;
   margin-top: 230px;
   margin-bottom: 210px;
+  padding-left: clamp(16px, 5vw, 15%);
+  padding-right: clamp(16px, 5vw, 15%);
   color: white;
+  width: 100%;
 }
 
 .contact-section h2 {

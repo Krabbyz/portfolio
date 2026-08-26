@@ -9,7 +9,22 @@ const ProjectTile = ({
   skills,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [canExpandImage, setCanExpandImage] = useState(true);
   const imageSrc = require(`../images/projects/${image}`);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 700px), (pointer: coarse)");
+    const updateCanExpandImage = () => {
+      setCanExpandImage(!mediaQuery.matches);
+    };
+
+    updateCanExpandImage();
+    mediaQuery.addEventListener("change", updateCanExpandImage);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateCanExpandImage);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isExpanded) {
@@ -31,20 +46,33 @@ const ProjectTile = ({
     };
   }, [isExpanded]);
 
+  useEffect(() => {
+    if (!canExpandImage) {
+      setIsExpanded(false);
+    }
+  }, [canExpandImage]);
+
   return (
     <div className="project-tile">
       <div className="project-image">
         <button
           className="project-image-button"
           type="button"
-          onClick={() => setIsExpanded(true)}
-          aria-label={`Expand ${title} image`}
+          onClick={() => {
+            if (canExpandImage) {
+              setIsExpanded(true);
+            }
+          }}
+          aria-label={
+            canExpandImage ? `Expand ${title} image` : `${title} image`
+          }
+          disabled={!canExpandImage}
         >
           <img src={imageSrc} alt={title} />
         </button>
       </div>
 
-      {isExpanded && (
+      {canExpandImage && isExpanded && (
         <div
           className="project-image-modal"
           role="dialog"
