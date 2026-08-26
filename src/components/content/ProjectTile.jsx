@@ -11,6 +11,7 @@ const ProjectTile = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [canExpandImage, setCanExpandImage] = useState(true);
   const imageSrc = require(`../images/projects/${image}`);
+  const shouldContainImage = image === "slugbook.png";
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 700px), (pointer: coarse)");
@@ -56,7 +57,9 @@ const ProjectTile = ({
     <div className="project-tile">
       <div className="project-image">
         <button
-          className="project-image-button"
+          className={`project-image-button${
+            shouldContainImage ? " project-image-button--contain" : ""
+          }`}
           type="button"
           onClick={() => {
             if (canExpandImage) {

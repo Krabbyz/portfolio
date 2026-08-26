@@ -12,6 +12,7 @@
 }
 
 .project-image-button {
+  aspect-ratio: 16 / 9;
   display: block;
   padding: 0;
   border: 3px solid #ffffff;
@@ -72,9 +73,19 @@
 
 .project-image-button img {
   display: block;
-  height: auto;
+  height: 100%;
   max-width: 650px;
+  object-fit: cover;
+  object-position: top center;
   width: 100%;
+}
+
+.project-image-button--contain {
+  background: #929292;
+}
+
+.project-image-button--contain img {
+  object-fit: contain;
 }
 
 .project-image-button:focus-visible {

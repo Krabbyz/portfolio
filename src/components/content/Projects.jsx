@@ -10,21 +10,38 @@ const Projects = () => {
       </h1>
       <ProjectTile
         image="slugmarketplace.png"
-        title="Slug Marketplace"
-        description="An online marketplace where users can browse and purchase products across dozens of categories, view detailed item pages with pricing and reviews, and add items to their cart."
+        title="SlugMarketplace"
+        description="An online marketplace built with a microservices architecture where users can browse and purchase products across dozens of categories, view detailed item pages with pricing and reviews, and add items to their cart."
         links={[
           { text: "View", link: "https://slugmarketplace.com/" },
           { text: "Github", link: "https://github.com/PouriaRez/Slugmarketplace" },
         ]}
         skills={[
           { image: "react.svg", name: "React" },
+          { image: "vite.svg", name: "Vite" },
+          { image: "nextjs.svg", name: "Next.js" },
           { image: "nodejslight.svg", name: "Node.js" },
+          { image: "expressjs.svg", name: "Express.js" },
           { image: "graphql.svg", name: "GraphQL" },
+          { image: "openapi.svg", name: "OpenAPI" },
           { image: "ts.svg", name: "TypeScript" },
-          { image: "js.svg", name: "JavaScript" },
           { image: "postgres.svg", name: "PostgreSQL" },
           { image: "docker.png", name: "Docker" },
           { image: "aws.svg", name: "AWS EC2" },
+        ]}
+      />
+      <ProjectTile
+        image="slugbook.png"
+        title="Slugbook"
+        description="A Facebook-inspired social app where users can create posts, add friends, and chat in real time through WebSocket-powered messaging. Repository available on request."
+        links={[]}
+        skills={[
+          { image: "react.svg", name: "React" },
+          { image: "nextjs.svg", name: "Next.js" },
+          { image: "nodejslight.svg", name: "Node.js" },
+          { image: "ts.svg", name: "TypeScript" },
+          { image: "postgres.svg", name: "PostgreSQL" },
+          { image: "docker.png", name: "Docker" },
         ]}
       />
       <ProjectTile
@@ -38,7 +55,10 @@ const Projects = () => {
         ]}
         skills={[
           { image: "react.svg", name: "React" },
+          { image: "vite.svg", name: "Vite" },
           { image: "nodejslight.svg", name: "Node.js" },
+          { image: "expressjs.svg", name: "Express.js" },
+          { image: "openapi.svg", name: "OpenAPI.js" },
           { image: "ts.svg", name: "TypeScript" },
           { image: "js.svg", name: "JavaScript" },
           { image: "postgres.svg", name: "PostgreSQL" },
@@ -63,7 +83,7 @@ const Projects = () => {
       <ProjectTile
         image="inventory.jpg"
         title="Inventory Management System"
-        description="A inventory management system used to keep track of items in stock. Made for use at Gong Cha Hayward."
+        description="A custom inventory management system for Gong Cha Hayward that helps staff track stock, organize item records, and monitor supplies through a simple web interface."
         links={[{ text: "Github", link: "https://github.com/Krabbyz/inventory" }]}
         skills={[
           { image: "react.svg", name: "React" },
@@ -77,7 +97,7 @@ const Projects = () => {
       <ProjectTile
         image="allianceofkingdoms.jpg"
         title="Alliance of Kingdoms"
-        description="A small tower defense game created in under 1 month with a couple of friends."
+        description="A tower defense game built with a small team in under one month, featuring waves of enemies, defensive unit placement, and fast-paced strategy gameplay."
         links={[
           { text: "Play", link: "https://krabbyz.itch.io/alliance-of-kingdoms" },
           { text: "Github", link: "https://github.com/Krabbyz/CMPM-80K_Final" },
@@ -87,7 +107,7 @@ const Projects = () => {
       <ProjectTile
         image="jumper.png"
         title="Jumper"
-        description="A Unity Game Project inspired by Doodle Jump, made using Unity and C#. This project focused on learning Unity and implementing procedural generation."
+        description="My first experience creating a complete project, inspired by Doodle Jump and built with Unity and C#. The project introduced me to game loops, player controls, and procedural level generation."
         links={[{ text: "Play", link: "https://krabbyz.itch.io/jumper" }]}
         skills={[
           { image: "unity.png", name: "Unity3D" },
