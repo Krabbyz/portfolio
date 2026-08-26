@@ -20,6 +20,7 @@ const Projects = () => {
           { image: "react.svg", name: "React" },
           { image: "nodejslight.svg", name: "Node.js" },
           { image: "graphql.svg", name: "GraphQL" },
+          { image: "ts.svg", name: "TypeScript" },
           { image: "js.svg", name: "JavaScript" },
           { image: "postgres.svg", name: "PostgreSQL" },
           { image: "docker.png", name: "Docker" },
@@ -38,6 +39,7 @@ const Projects = () => {
         skills={[
           { image: "react.svg", name: "React" },
           { image: "nodejslight.svg", name: "Node.js" },
+          { image: "ts.svg", name: "TypeScript" },
           { image: "js.svg", name: "JavaScript" },
           { image: "postgres.svg", name: "PostgreSQL" },
           { image: "docker.png", name: "Docker" },

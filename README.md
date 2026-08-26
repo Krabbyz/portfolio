@@ -1,6 +1,6 @@
 # Personal Portfolio Website 🌐
 
-Personal portfolio site for Austin Nguyen, built with React. The site includes an animated landing background, responsive About and Projects sections, project image previews for desktop users, and an EmailJS-powered contact form.
+Welcome to my personal portfolio repository! This showcases my journey as a computer science student and highlights my skills, projects, and achievements. The website is built to be interactive, responsive, and a reflection of my growth as a developer.
 
 ## 🎯 Project Goals
 
@@ -23,3 +23,7 @@ Personal portfolio site for Austin Nguyen, built with React. The site includes a
 - EmailJS
 - Ant Design Icons
 - React Icons
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

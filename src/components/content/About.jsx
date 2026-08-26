@@ -11,6 +11,7 @@ const technologyGroups = [
       { image: "react.svg", name: "React" },
       { image: "vite.svg", name: "Vite" },
       { image: "nextjs.svg", name: "Next.js" },
+      { image: "ts.svg", name: "TypeScript" },
       { image: "materialui.svg", name: "MaterialUI" },
       { image: "tailwindcss.svg", name: "Tailwind CSS" },
     ],
