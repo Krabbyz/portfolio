@@ -24,6 +24,6 @@ Welcome to my personal portfolio repository! This showcases my journey as a comp
 - Ant Design Icons
 - React Icons
 
-## License
+## ⚖️ License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
