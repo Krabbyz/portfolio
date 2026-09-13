@@ -84,7 +84,10 @@ const Projects = () => {
         image="inventory.jpg"
         title="Inventory Management System"
         description="A custom inventory management system for Gong Cha Hayward that helps staff track stock, organize item records, and monitor supplies through a simple web interface."
-        links={[{ text: "Github", link: "https://github.com/Krabbyz/inventory" }]}
+        links={[
+          { text: "Demo", link: "https://krabbyz.github.io/inventory/" },
+          { text: "Github", link: "https://github.com/Krabbyz/inventory" }
+        ]}
         skills={[
           { image: "react.svg", name: "React" },
           { image: "js.svg", name: "JavaScript" },
