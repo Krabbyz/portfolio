@@ -9,6 +9,23 @@ const Projects = () => {
         Here are some things I've built in my freetime
       </h1>
       <ProjectTile
+        image="hotm.png"
+        title="Heart of the Mountain Optimizer"
+        description="A tool for Minecraft Hypixel SkyBlock that analyzes a player's equipment and skill tree to recommend efficient mining setups and estimate how many resources they can collect per hour."
+        links={[
+          { text: "View", link: "https://hotm.austinnguyen.dev/" },
+        ]}
+        skills={[
+          { image: "react.svg", name: "React" },
+          { image: "vite.svg", name: "Vite" },
+          { image: "nodejslight.svg", name: "Node.js" },
+          { image: "expressjs.svg", name: "Express.js" },
+          { image: "ts.svg", name: "TypeScript" },
+          { image: "docker.png", name: "Docker" },
+          { image: "oracle.png", name: "Oracle Cloud Infrastructure" },
+        ]}
+      />
+      <ProjectTile
         image="slugmarketplace.png"
         title="SlugMarketplace"
         description="An online marketplace built with a microservices architecture where users can browse and purchase products across dozens of categories, view detailed item pages with pricing and reviews, and add items to their cart."

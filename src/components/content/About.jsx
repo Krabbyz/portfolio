@@ -44,6 +44,7 @@ const technologyGroups = [
       { image: "vitest.svg", name: "Vitest" },
       { image: "reacttestinglibrary.svg", name: "React Testing Library" },
       { image: "puppeteer.svg", name: "Puppeteer" },
+      { image: "playwright.svg", name: "Playwright" },
       { image: "msw.svg", name: "Mock Service Worker (MSW)" },
     ],
   },
@@ -62,7 +63,7 @@ const About = () => {
 
           <div className="about-bio">
             <p>
-              Hi, I'm Austin Nguyen. I've been fascinated by computers for as long as I can remember, and that curiosity grew into a passion for building software and solving problems through technology.
+              Hi, I'm Austin Nguyen, a Software Developer based in Silicon Valley. I've been fascinated by computers for as long as I can remember, and that curiosity grew into a passion for building software and solving problems through technology.
             </p>
             <p>
               I enjoy creating practical solutions that make things easier, more efficient, and more enjoyable to use. Whether I'm learning a new tool or improving an existing project, I'm always looking for ways to grow as a developer and strengthen my skills.
